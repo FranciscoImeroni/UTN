@@ -201,7 +201,7 @@ El criterio de formar grupos de 4 bits es el mismo que se tomó para la conversi
 #### Conversión directa Hexadecimal a binario (16) a (2)
 
 De manera inversa, se podrá convertir directamente un hexadecimal a binario, reemplazando cada dígito hexadecimal por su correspondiente binario en grupos de 4 bits.
-
+0
 ##### Entero
 
 ![[Pasted image 20260415002932.png|236]]
@@ -221,6 +221,14 @@ Si se desea convertir una fracción hexadecimal a binario en forma directa, esto
 ## Operaciones fundamentales en binario
 
 ### Suma
+
+^c0b2f9
+
+Se opera de derecha a izquierda siguiendo las siguientes reglas
+**0+0=0
+0+1=1
+1+0=1
+1+1=10 (escribir 0 y llevar 1 al sig)**
 
 ![[Pasted image 20260419173028.png]]
 
@@ -243,4 +251,14 @@ La operación de resta en una compu- tadora se calcula mediante la suma del minu
 
 # Complemento de un número
 
-## Complemento a la base, a la raíz o auténtico
+
+## Complemento restringido/a la base -1 (C1)
+
+Invertir todos los bits
+
+Si te dan un binario que no sea 4 bits hay que pasarloa 4 o a 8 
+
+## Complemento autentico/a la base (C2)
+
+Invertir todos los bits y sumar ( [[#^c0b2f9]] ) 1 al resultado
+
