@@ -14,7 +14,7 @@ La estructura formal de una organización esta dividida en unidades que son agru
 
 Es la agrupación de actividades (o tareas) con un criterio predeterminado 
 
-Departamentalizar no implica agrupar en “DEPARTAMENTOS”
+**Departamentalizar no implica agrupar en “DEPARTAMENTOS”**
 
 ### CRITERIOS DE DEPARTAMENTALIZACIÓN
 

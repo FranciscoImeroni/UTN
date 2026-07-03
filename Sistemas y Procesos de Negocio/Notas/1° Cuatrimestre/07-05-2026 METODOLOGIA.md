@@ -1,3 +1,6 @@
+2 etas de la metedologia y nombrar anterior y pruebas
+
+
 ## PROCESO GENERICO PARA RESOLVER PROBLEMAS
 
 1. Decidir que hacer (cual es el problema?) 
@@ -23,10 +26,10 @@ Implica un primer contacto con la Organización (tamaño, distribución geográf
 
 Conocer los requerimientos y las expectativas del cliente, así como también las áreas afectadas por el problema del usuario y establecer las restricciones del proyecto
 
--  TECNICA PARA OBTENER INFORMACION 
+-  TÉCNICA PARA OBTENER INFORMACIÓN 
 	- ENTREVISTA
 
--  TECNICAS PARA DOCUMENTAR INFORMACION 
+-  TÉCNICAS PARA DOCUMENTAR INFORMACIÓN 
 	- INFORME DE RECONOCIMIENTO + ORGANIGRAMA
 
 ## RELEVAMIENTO
@@ -35,7 +38,7 @@ Conocer los requerimientos y las expectativas del cliente, así como también la
 2. El objetivo de esta etapa es construir un modelo de la realidad que será la base del modelo solución ahondando en los procesos involucrados 
 3. El modo en que el sistema de información se desarrolla en la actualidad y la forma en la que el cliente desearía que se comportase
 
-- TECNICAS PARA OBTENER INFORMACION
+- TÉCNICAS PARA OBTENER INFORMACIÓN
 	- Entrevista
 	- Cuestionario 
 	- Observación personal 
@@ -59,15 +62,15 @@ Conocer los requerimientos y las expectativas del cliente, así como también la
 
 1. Analizar de forma individual cada una de las alternativas posibles para elegir la mas viable. 
 2. Se realiza conjuntamente entre el Ingeniero en Sistemas de Información 
-3. Se utilizan diferentes criterios (Económicos-FinancierosTécnicos—Operativos-Políticos-Legales-Otros) 
-4. Se elige la mejor propuesta: ALTERNATIVA SOLUCION que generará un conjunto de proyectos asociados (construccion SWadquisición SW-adquisión HW-Capacitación-Tercerizaciónformalización de procesos no informatizados)
+3. Se utilizan diferentes criterios (Económicos-Financieros Técnicos—Operativos-Políticos-Legales-Otros) 
+4. Se elige la mejor propuesta: ALTERNATIVA SOLUCION que generará un conjunto de proyectos asociados (construccion SWadquisición SW-adquisión HW-Capacitación-Tercerización formalización de procesos no informatizados)
 
 ## ANÁLISIS DE REQUISITOS INFORMATICOS
 
 1. **Requisitos**: características inherentes a un objeto para ser considerado como tal.
 2. **Requerimientos**: son el conjunto de percepciones externas para que el objeto sea reconocido como lo que es.
 
-## TIPOS DE REQUISITOS
+### Tipos de requisitos
 
 ![[Pasted image 20260514235338.png]]
 
@@ -80,13 +83,27 @@ Creación de un modelo de solución basado en el modelo de análisis y la soluci
 3. Prediseño de los documentos y formularios 
 4. Preparación de la estructura de los manuales de normas y procedimientos
 
--  Técnicas de documentación
-	- DFD 
-	- DER 
-	- Diagrama de Clases 
-	- Diagrama de Casos de Uso 
-	- Diccionario de Datos
+## Técnicas de Documentación (Enfoque en Procesos de Negocio)
 
+* #### DFD (Diagrama de Flujo de Datos)
+  * **Descripción:** Es una herramienta visual que muestra cómo circula la información a través de los distintos procesos de la organización.
+  * **Propósito en Negocios:** Permite entender qué datos entran al negocio (ej. un pedido de un cliente), qué procesos operativos los transforman (ej. facturación, preparación de envío) y dónde se almacena o hacia dónde se envía la información resultante. Ayuda a detectar cuellos de botella y flujos ineficientes en la empresa.
+
+* #### DER (Diagrama Entidad-Relación)
+  * **Descripción:** Es el modelo conceptual que representa los activos de información y las reglas de negocio de la organización.
+  * **Propósito en Negocios:** Muestra qué "conceptos" o "entidades" del mundo real necesita gestionar la empresa (ej. Clientes, Proveedores, Productos, Ventas) y cómo se vinculan entre sí según las políticas de la compañía (ej. "un *Cliente* puede tener muchas *Cuentas Corrientes*"). Es el mapa de la estructura de información del negocio.
+
+* #### Diagrama de Clases
+  * **Descripción:** Es un modelo conceptual que define las categorías de información del negocio, sus características y los servicios que ofrecen.
+  * **Propósito en Negocios:** ,  se usa para modelar el "Dominio del Negocio". Define las clases de objetos que maneja la organización (ej. un *Empleado*), qué datos clave los describen (ej. legajo, sueldo) y qué responsabilidades o acciones tienen asociadas dentro del proceso (ej. *liquidarSueldo()* o *registrarAsistencia()*).
+
+* #### Diagrama de Casos de Uso
+  * **Descripción:** Es una técnica para identificar el alcance de un sistema a partir de las necesidades de los usuarios y los roles de la organización.
+  * **Propósito en Negocios:** Muestra qué funciones específicas del sistema necesita realizar un puesto de trabajo o área (los Actores, ej. *Cajero*, *Gerente*) para cumplir con sus tareas diarias (los Casos de Uso, ej. *Cerrar Caja*, *Aprobar Crédito*). Sirve para alinear los requerimientos del negocio con lo que el sistema debe permitir hacer.
+
+* #### Diccionario de Datos
+  * **Descripción:** Es el glosario centralizado que estandariza el significado de los términos y datos utilizados en toda la organización.
+  * **Propósito en Negocios:** Asegura que todas las áreas de la empresa entiendan lo mismo por un dato determinado. Evita ambigüedades definiendo con precisión qué es, por ejemplo, el "ID de Cliente" o el "Monto Neto", qué formato tiene y qué reglas de validación corporativas debe cumplir, facilitando la comunicación entre los usuarios de negocio y el equipo de sistemas.
 
 ## DESARROLLO
 Construcción de lo diseñado como propuesta de solución

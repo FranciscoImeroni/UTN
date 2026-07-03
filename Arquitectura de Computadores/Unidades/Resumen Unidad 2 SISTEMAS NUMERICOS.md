@@ -6,8 +6,18 @@
 
 ### [PowerPoint clase](https://drive.google.com/file/d/1H9x_xUrWkUgAkAeS_mhO8mdrlz2bZstt/view)
 
+### [[Assets/SistemasNumeración_Unidad_II.pdf|Diapositivas Unidad 2]]
+
 ### [[Capitulo2-PatriciaQuiroga.pdf|Unidad 2 pdf]]
 
+## Introducción: representación de la realidad
+
+La información se puede representar de dos maneras:
+
+- **Externa** (utilizada por las personas): números, letras, gráficos.
+- **Interna** (utilizada por la computadora): representación de números, representación de caracteres.
+
+En este capítulo se hace especial hincapié en el **sistema binario**, por ser el que utiliza la computadora. El sistema binario representa todos los símbolos del usuario (letras, números), los caracteres (signos de puntuación) o los comandos (`<ENTER>`) con una secuencia de bits. No solo los datos que se procesan están representados en binario, sino también las **instrucciones** de los programas. Por ejemplo, la letra "A" se codifica como `01000001` y la "B" como `01000010`.
 
 # Sistemas numéricos
 
@@ -54,6 +64,42 @@ Luego, si queremos hallar el equivalente decimal del número hexadecimal 1A2, lo
 
 ![[Pasted image 20260413200032.png]]
 
+
+### Tabla de equivalencias entre sistemas (Tabla 2-1)
+
+| Decimal | Binario | Octal | Hexadecimal |
+|---|---|---|---|
+| 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 |
+| 2 | 10 | 2 | 2 |
+| 3 | 11 | 3 | 3 |
+| 4 | 100 | 4 | 4 |
+| 5 | 101 | 5 | 5 |
+| 6 | 110 | 6 | 6 |
+| 7 | 111 | 7 | 7 |
+| 8 | 1000 | 10 | 8 |
+| 9 | 1001 | 11 | 9 |
+| 10 | 1010 | 12 | A |
+| 11 | 1011 | 13 | B |
+| 12 | 1100 | 14 | C |
+| 13 | 1101 | 15 | D |
+| 14 | 1110 | 16 | E |
+| 15 | 1111 | 17 | F |
+
+El **"10"** (uno, cero) es el número que en cualquier sistema representa a la base. Por ejemplo, en base 5:
+
+```
+10(5) = 5(10)
+100(5) = 5² = 25(10)
+```
+
+### Número de cifras. Cantidad decimal máxima
+
+Llamando **n** a la cantidad de dígitos en juego:
+
+- Con **n bits** se pueden representar los valores decimales comprendidos entre `0` y `2ⁿ − 1`.
+- Con **n dígitos octales** se pueden representar los valores decimales comprendidos entre `0` y `8ⁿ − 1`.
+- Con **n dígitos hexadecimales** se pueden representar los valores decimales comprendidos entre `0` y `16ⁿ − 1`.
 
 Para analizar los contenidos de los registros internos de la computadora, se utilizan los sis- temas octal y hexadecimal como “métodos taquigráficos”, que permiten representar su conte- nido binario compactado. Esto es posible debido a que 8 y 16 son potencias exactas de 2 (8 = 2^3 y 16 = 2^4); en consecuencia, es factible convertir números del sistema binario al octal y al hexadecimal tomando agrupaciones de 3 y 4 bits, respectivamente. Por ejemplo, el número binario 11110010(2) = 362(8) y F2(16)
 
@@ -238,6 +284,17 @@ La operación de resta en una compu- tadora se calcula mediante la suma del minu
 
 ![[Pasted image 20260419173207.png]]![[Pasted image 20260419173242.png]]
 
+#### Método alternativo (manual): "¿cuánto le falta...?"
+
+Si no se recuerdan las combinaciones de la resta directa, para cada par de dígitos se puede preguntar: *¿cuál es el dígito que sumado al sustraendo me da el minuendo?* o *¿cuánto le falta al sustraendo para llegar al minuendo?*.
+
+- Si el minuendo es menor que el sustraendo en una columna, hay que "pedir 1" a la columna siguiente (equivalente a pedirle una unidad a la base, que **siempre** equivale a `10` en esa base) y sumarla al minuendo.
+- Ese "pedido" debe reflejarse sumándolo al sustraendo de la columna donde se pidió, antes de continuar restando en esa columna.
+
+Ejemplo: `11011(2) − 1110(2) = 01101(2)` (comprobación decimal: `27 − 14 = 13`).
+
+Ambos mecanismos (resta directa por combinaciones, y resta manual por "pedido") son útiles para seguir manualmente la ejecución de un programa cuyos resultados no son los esperados, aunque en la computadora la resta se implementa siempre como una suma con el complemento del sustraendo (así se **reutiliza el mismo circuito sumador**).
+
 ## Operaciones fundamentales en octal y hexadecimal
 
 ### Suma octal 
@@ -248,11 +305,56 @@ La operación de resta en una compu- tadora se calcula mediante la suma del minu
 
 ![[Pasted image 20260419173558.png]]
 
+### Técnica para sumar números grandes (más de 2 sumandos) en cualquier base
+
+Cuando hay que sumar varios dígitos de una misma columna (por ejemplo, `7(8) + 7(8) + 7(8)`):
+
+1. Sumar los números de la columna **en base decimal**: `7 + 7 + 7 = 21`.
+2. Restar la base de origen (8) las veces que sea necesario hasta que el resto sea menor que esa base: `21 − 8 = 13`, `13 − 8 = 5`.
+3. El **resto final** (menor que la base, en este caso `5`) es el dígito resultado de la suma en la base de origen.
+4. La **cantidad de veces que se restó la base** (en este caso `2`) es el acarreo para la columna siguiente.
+
+Si los números tienen más de una columna, se repite la técnica en cada una, sumando el acarreo a la columna siguiente.
+
+> Ejemplo en hexadecimal: `F(16) + F(16) + F(16)` → en decimal `15+15+15 = 45` → `45 − 16 = 29` → `29 − 16 = 13` (se restó la base 2 veces) → resultado `D(16)` con acarreo `2` → total `2D(16)`.
 
 # Complemento de un número
 
+Dado que muchas computadoras digitales basan su operatoria aritmética en la suma, se usa el concepto de **complemento** para poder hacer restas mediante sumas y para representar números signados (negativos).
+
+## Complemento a la base / a la raíz / auténtico (C2 en binario)
+
+Para un número `N` de `n` dígitos, su complemento a la base `N'` cumple: `N + N' = Bⁿ`, de donde:
+
+```
+Cb N = Bⁿ − N
+```
+
+En el sistema binario, el complemento a la base se llama **complemento a 2 (C2)**, ya que la base es 2.
+
+**Ejemplos en base 10 (para entender el concepto antes de aplicarlo en binario):**
+```
+C10 7   = 10¹ − 7     = 3
+C10 548 = 10³ − 548   = 1000 − 548 = 452
+C10 05  = 10² − 05    = 95
+```
 
 ## Complemento restringido/a la base -1 (C1)
+
+Para un número `N` de `n` dígitos, su complemento restringido `N'` cumple: `N + N' = Bⁿ − 1`, de donde:
+
+```
+Cb−1 N = (Bⁿ − 1) − N
+```
+
+En el sistema binario, el complemento a la base −1 se llama **complemento a 1 (C1)** y coincide con el complemento booleano (invertir los bits).
+
+**Ejemplos en base 10:**
+```
+C10⁻¹ 7   = (10¹ − 1) − 7   = 9 − 7     = 2
+C10⁻¹ 548 = (10³ − 1) − 548 = 999 − 548 = 451
+C10⁻¹ 05  = (10² − 1) − 05  = 99 − 05   = 94
+```
 
 Invertir todos los bits
 
@@ -261,4 +363,115 @@ Si te dan un binario que no sea 4 bits hay que pasarloa 4 o a 8
 ## Complemento autentico/a la base (C2)
 
 Invertir todos los bits y sumar ( [[#^c0b2f9]] ) 1 al resultado
+
+## Representación de binarios negativos mediante complemento
+
+Para convertir un decimal negativo (p. ej. `−3`) a un binario con signo de `n` bits:
+
+- El **bit de extrema izquierda** representa el signo: `1` = negativo.
+- Los bits restantes representan el complemento (C1 o C2) del valor absoluto.
+
+**Con complemento a 2 (C2)** — signo de 3 bits para `−3`:
+```
+Valor absoluto de 3 en 2 bits: 11
+Complemento a 2 de 11: invertir (00) + 1 = 01
+Resultado: 1 01   →   signo=1, magnitud complementada=01
+```
+
+**Con complemento a 1 (C1)** — signo de 3 bits para `−3`:
+```
+Valor absoluto de 3 en 2 bits: 11
+Complemento a 1 de 11 (invertir): 00
+Resultado: 1 00   →   signo=1, magnitud complementada=00
+```
+
+> Para **descomplementar** un número (hallar de nuevo su valor absoluto) se aplica el mismo método que para hallar el complemento (complemento del complemento).
+
+La cantidad de bits `n` usados para representar un número binario con signo **siempre incluye el bit de signo**.
+
+# Resumen de conversión entre sistemas numéricos (diapositivas)
+
+- **De octal, binario o hexadecimal a decimal:** mediante el polinomio de potencias de la base (parte entera y fraccionaria).
+- **De decimal a hexadecimal, octal o binario:**
+  - Método de divisiones sucesivas por la base (parte entera).
+  - Método de multiplicaciones sucesivas por la base (parte fraccionaria).
+- **De hexadecimal u octal a binario** (y viceversa): pasaje directo entre bases.
+- **De octal a hexadecimal:** se convierte primero de octal a decimal (o binario) y luego el valor obtenido a hexadecimal.
+- **De hexadecimal a octal:** se convierte primero de hexadecimal a decimal (o binario) y luego el valor obtenido a octal.
+
+# Unidades
+
+## Unidades básicas de información
+
+| Medida | Unidad | Equivalencia | Notación exponencial |
+|---|---|---|---|
+| bit | bit | 1 bit | — |
+| Byte | B | 8 bits | — |
+| Kilobyte | KB | 1024 bytes | 2¹⁰ |
+| Megabyte | MB | 1024 KB | 2²⁰ |
+| Gigabyte | GB | 1024 MB | 2³⁰ |
+| Terabyte | TB | 1024 GB | 2⁴⁰ |
+| Petabyte | PB | 1024 TB | 2⁵⁰ |
+| Exabyte | EB | 1024 PB | 2⁶⁰ |
+| Zettabyte | ZB | 1024 EB | 2⁷⁰ |
+| Yottabyte | YB | 1024 ZB | 2⁸⁰ |
+| Brontobyte | BB | 1024 YB | 2⁹⁰ |
+| Geopbyte | GeB | 1024 BB | 2¹⁰⁰ |
+
+## Unidades en las que trabaja la computadora
+
+- **4 bits** → *nibble*
+- **8 bits** → *byte*
+- **16 bits** → *word*
+- **32 bits** → *double word* (dWord)
+- **64 bits** → *quadruple word* (qWord)
+
+## Submúltiplos (para tiempos, p. ej. ciclos de reloj)
+
+| Prefijo | Valor |
+|---|---|
+| Nano | 10⁻⁹ |
+| Pico | 10⁻¹² |
+| Femto | 10⁻¹⁵ |
+| Atto | 10⁻¹⁸ |
+| Zepto | 10⁻²¹ |
+| Yocto | 10⁻²⁴ |
+
+## Tipos de datos primitivos y su tamaño
+
+| Tipo | Tamaño |
+|---|---|
+| Byte | 8 bits |
+| Short | 16 bits |
+| Int | 32 bits |
+| Long | 64 bits |
+| Float | 32 bits |
+| Double | 64 bits |
+| Boolean | 32 bits |
+| Char | 8 bits por carácter |
+
+# Aplicaciones prácticas del hexadecimal/octal (Capítulo 2 - Resumen)
+
+## Byte de estado de un periférico (ejemplo: impresora)
+
+Una impresora puede enviar un código hexadecimal que representa su estado actual, por ejemplo `D0(16)`, que corresponde al binario `11010000`. Cada bit tiene un significado (de mayor a menor peso, bit 7 a bit 0):
+
+| Bit | Significado |
+|---|---|
+| 7 | Encendida |
+| 6 | No ocupada |
+| 5 | Sin papel |
+| 4 | Seleccionada entre otras impresoras |
+| 3 | Atasco de papel |
+| 2 | Bajo nivel de tinta |
+| 1 | Error de dispositivo |
+| 0 | Tiempo excedido para enviar el byte |
+
+Con `D0(16) = 11010000(2)`, los bits en `1` son el 7, 6 y 4 → la impresora está **encendida, no ocupada y seleccionada**, por lo que el software puede enviar el byte para imprimir.
+
+## Direcciones de red: hexadecimal + decimal
+
+Es común combinar sistemas numéricos en una configuración de red: la **dirección física del adaptador (MAC)** suele expresarse en **hexadecimal**, mientras que la **dirección IP** se muestra convertida a **decimal** por la propia computadora (por ejemplo, `200.115.237.194`). Si no fuera así, habría que convertir manualmente cada octeto hexadecimal de la IP a decimal.
+
+> En definitiva: el complemento de un número binario permite operar restas mediante sumas de forma simple para los componentes electrónicos, y los sistemas octal/hexadecimal permiten "empaquetar" bits para que un informático pueda leer e interpretar más fácilmente el contenido binario de registros, bytes de estado, direcciones, etc.
 
