@@ -1,5 +1,5 @@
 ### Saber:
- -  saber hacer todos los pasajes ya que hay que escribir el camino y luego se puede verificar no calculadora
+ -  saber hacer todos los pasajes ya que hay que escribir el camino y luego se puede verificar en calculadora
  - 
 
 [[Sistemas numericos-TP2.pdf|Ejercicios TP2]] (Ejercicios sobre pasajes SNP)

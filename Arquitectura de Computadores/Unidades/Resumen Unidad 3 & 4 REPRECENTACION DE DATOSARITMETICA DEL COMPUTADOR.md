@@ -100,9 +100,9 @@ El BCD puro es poner el numero individual en binario
 - **Empaquetado (packed):** se elimina la zona y cada dígito queda representado con solo 4 bits; el signo se ubica en la cabecera o cola del número (en el nibble sobrante del último octeto).
 
 ```
-+3456   desempaquetado: 2B 33 34 35 36        empaquetado: 03456B   (signo + = B)
-+279    desempaquetado: 2B 32 37 39           empaquetado: 279B
--3456   desempaquetado: 2D 33 34 35 36        empaquetado: 03456D   (signo − = D)
++3456   desempaquetado: 2B 33 34 35 36     empaquetado: 03456B   (signo + = B)
++279    desempaquetado: 2B 32 37 39        empaquetado: 279B
+-3456   desempaquetado: 2D 33 34 35 36     empaquetado: 03456D   (signo − = D)
 ```
 
 El empaquetado ahorra espacio pero la ALU solo puede operar un grupo reducido de dígitos decimales por vez, por lo que operandos largos requieren varios accesos.
